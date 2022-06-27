@@ -429,3 +429,4 @@ such as [IntelliJ IDEA](https://www.jetbrains.com/idea/?from=fluttercandies).
 [Contribute custom implementations]: https://github.com/fluttercandies/flutter_wechat_assets_picker/blob/main/example/lib/customs/CONTRIBUTING.md
 [photo_manager#561]: https://github.com/CaiJingLong/flutter_photo_manager/issues/561
 [photo_manager#insert-new-item]: https://github.com/CaiJingLong/flutter_photo_manager#insert-new-item
+# wechat_assets_picker

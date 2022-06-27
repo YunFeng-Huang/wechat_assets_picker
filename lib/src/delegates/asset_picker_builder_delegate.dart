@@ -940,6 +940,8 @@ class DefaultAssetPickerBuilderDelegate
         builder: (BuildContext context, DefaultAssetPickerProvider p, _) {
           final bool shouldDisplayAssets =
               p.hasAssetsToDisplay || shouldBuildSpecialItem;
+          print(
+              'shouldDisplayAssets===${p.hasAssetsToDisplay}=${shouldBuildSpecialItem}');
           return AnimatedSwitcher(
             duration: switchingPathDuration,
             child: shouldDisplayAssets
@@ -997,6 +999,7 @@ class DefaultAssetPickerBuilderDelegate
                 final Widget _child;
                 final bool shouldDisplayAssets =
                     p.hasAssetsToDisplay || shouldBuildSpecialItem;
+                print('shouldDisplayAssets2===$shouldDisplayAssets');
                 if (shouldDisplayAssets) {
                   _child = Stack(
                     children: <Widget>[
@@ -1555,12 +1558,15 @@ class DefaultAssetPickerBuilderDelegate
       child: Selector<DefaultAssetPickerProvider, bool>(
         selector: (_, DefaultAssetPickerProvider p) => p.isAssetsEmpty,
         builder: (BuildContext context, bool isAssetsEmpty, __) {
+          print('isAssetsEmpty==$isAssetsEmpty');
+          // return emptyIndicator(context);
           if (isAssetsEmpty) {
             return emptyIndicator(context);
           }
           return PlatformProgressIndicator(
             color: theme.iconTheme.color,
             size: context.mediaQuery.size.width / gridCount / 3,
+            strokeWidth: 2,
           );
         },
       ),

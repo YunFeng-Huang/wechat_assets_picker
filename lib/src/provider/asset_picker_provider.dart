@@ -49,6 +49,7 @@ abstract class AssetPickerProvider<Asset, Path> extends ChangeNotifier {
   /// 销毁时重置所有内容
   @override
   void dispose() {
+    print('销毁时重置所有内容');
     _isAssetsEmpty = false;
     _pathsList.clear();
     _currentPath = null;

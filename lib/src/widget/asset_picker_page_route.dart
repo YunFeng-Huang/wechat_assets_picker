@@ -64,14 +64,6 @@ class AssetPickerPageRoute<T> extends PageRoute<T> {
     Animation<double> secondaryAnimation,
     Widget child,
   ) {
-    return SlideTransition(
-      position: Tween<Offset>(
-        begin: const Offset(0, 1),
-        end: Offset.zero,
-      ).animate(
-        CurvedAnimation(curve: transitionCurve, parent: animation),
-      ),
-      child: ClipRect(child: child), // Clip the overflowed part.
-    );
+    return child;
   }
 }
