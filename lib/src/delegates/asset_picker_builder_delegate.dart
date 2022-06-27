@@ -1487,7 +1487,7 @@ class DefaultAssetPickerBuilderDelegate
                 : textDelegate.confirm,
             style: TextStyle(
               color: p.isSelectedNotEmpty
-                  ? theme.textTheme.bodyText1?.color
+                  ? Colors.white
                   : theme.textTheme.caption?.color,
               fontSize: 17,
               fontWeight: FontWeight.normal,
@@ -2008,8 +2008,12 @@ class DefaultAssetPickerBuilderDelegate
   Widget selectIndicator(BuildContext context, int index, AssetEntity asset) {
     final double indicatorSize = context.mediaQuery.size.width / gridCount / 3;
     final Duration duration = switchingPathDuration * 0.75;
+    int index1 = 0;
     return Selector<DefaultAssetPickerProvider, String>(
-      selector: (_, DefaultAssetPickerProvider p) => p.selectedDescriptions,
+      selector: (_, DefaultAssetPickerProvider p) {
+        index1 = p.selectedAssets.indexOf(asset);
+        return p.selectedDescriptions;
+      },
       builder: (BuildContext context, String descriptions, __) {
         final bool selected = descriptions.contains(asset.toString());
         final Widget innerSelector = AnimatedContainer(
@@ -2031,8 +2035,9 @@ class DefaultAssetPickerBuilderDelegate
             child: AnimatedSwitcher(
               duration: duration,
               reverseDuration: duration,
-              child:
-                  selected ? const Icon(Icons.check) : const SizedBox.shrink(),
+              child: selected
+                  ? Text('${index1 + 1}', style: TextStyle(color: Colors.white))
+                  : const SizedBox.shrink(),
             ),
           ),
         );
@@ -2081,11 +2086,11 @@ class DefaultAssetPickerBuilderDelegate
                   : theme.backgroundColor.withOpacity(.1),
               child: selected && !isSingleAssetMode
                   ? Align(
-                      alignment: AlignmentDirectional.topStart,
+                      alignment: AlignmentDirectional.topEnd,
                       child: SizedBox(
                         height: indicatorSize / 2.5,
                         child: FittedBox(
-                          alignment: AlignmentDirectional.topStart,
+                          alignment: AlignmentDirectional.topEnd,
                           fit: BoxFit.cover,
                           child: Text(
                             '${index + 1}',
