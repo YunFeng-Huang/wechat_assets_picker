@@ -615,10 +615,13 @@ abstract class AssetPickerBuilderDelegate<Asset, Path> {
 
     final Widget _accessLimitedButton = GestureDetector(
       onTap: () => permissionOverlayDisplay.value = false,
-      child: ScaleText(
-        textDelegate.accessLimitedAssets,
-        style: TextStyle(color: interactiveTextColor(context)),
-        semanticsLabel: semanticsTextDelegate.accessLimitedAssets,
+      child: Container(
+        child: ScaleText(
+          textDelegate.accessLimitedAssets,
+          style: TextStyle(color: interactiveTextColor(context)),
+          semanticsLabel: semanticsTextDelegate.accessLimitedAssets,
+        ),
+        margin: const EdgeInsets.only(bottom: 20),
       ),
     );
 
@@ -1474,6 +1477,9 @@ class DefaultAssetPickerBuilderDelegate
   Widget confirmButton(BuildContext context) {
     return Consumer<DefaultAssetPickerProvider>(
       builder: (_, DefaultAssetPickerProvider p, __) {
+        print('============');
+        print(p);
+        print(p.selectedAssets);
         return MaterialButton(
           minWidth: p.isSelectedNotEmpty ? 48 : 20,
           height: appBarItemHeight,

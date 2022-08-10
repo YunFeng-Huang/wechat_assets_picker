@@ -13,8 +13,7 @@ class MultiAssetsPage extends StatefulWidget {
   _MultiAssetsPageState createState() => _MultiAssetsPageState();
 }
 
-class _MultiAssetsPageState extends State<MultiAssetsPage>
-    with AutomaticKeepAliveClientMixin, ExamplePageMixin {
+class _MultiAssetsPageState extends State<MultiAssetsPage> with AutomaticKeepAliveClientMixin, ExamplePageMixin {
   @override
   int get maxAssetsCount => 9;
 
@@ -28,8 +27,7 @@ class _MultiAssetsPageState extends State<MultiAssetsPage>
       PickMethod.audio(maxAssetsCount),
       PickMethod.camera(
         maxAssetsCount: maxAssetsCount,
-        handleResult: (BuildContext context, AssetEntity result) =>
-            Navigator.of(context).pop(<AssetEntity>[...assets, result]),
+        handleResult: (BuildContext context, AssetEntity result) => Navigator.of(context).pop(<AssetEntity>[...assets, result]),
       ),
       PickMethod.cameraAndStay(maxAssetsCount: maxAssetsCount),
       PickMethod.changeLanguages(maxAssetsCount),
